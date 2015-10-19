@@ -6,7 +6,6 @@ public class Repeat{
 			if (a.charAt(i) == a.charAt(i + 1)){
 				System.out.print("Repeat " + a.charAt(i));
 				c = false;
-				break;
 			}			
 		}
 		if (c) System.out.print("No repeat");
