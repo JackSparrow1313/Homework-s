@@ -19,31 +19,31 @@ public class Food {
         return name;
     }
     
-    public String getDate(){
+    public int getDate(){
       int i = this.getBestUntil().toString().indexOf("DAY_OF_MONTH=") + 13;
       String s = this.getBestUntil().toString().substring(i+1, i+2);
       if (('0' <= s.charAt(0)) && ('9' >= s.charAt(0))){
-        return this.getBestUntil().toString().substring(i, i+2);
+        return Integer.parseInt(this.getBestUntil().toString().substring(i, i+2));
       } else 
         { 
-        return this.getBestUntil().toString().substring(i, i+1);
+        return Integer.parseInt(this.getBestUntil().toString().substring(i, i+1));
       }
     }
  
-    public String getMonth(){
+    public int getMonth(){
       int i = this.getBestUntil().toString().indexOf("MONTH=") + 6;
       String s = this.getBestUntil().toString().substring(i+1, i+2);
       if (('0' <= s.charAt(0)) && ('9' >= s.charAt(0))){
-        return this.getBestUntil().toString().substring(i, i+2);
+        return Integer.parseInt(this.getBestUntil().toString().substring(i, i+2));
       } else     
         { 
-        return this.getBestUntil().toString().substring(i, i+1);
+        return Integer.parseInt(this.getBestUntil().toString().substring(i, i+1));
       }
     }
     
-    public String getYear(){
+    public int getYear(){
        int i = this.getBestUntil().toString().indexOf("YEAR=") + 5;
-        return this.getBestUntil().toString().substring(i, i+4);
+       return Integer.parseInt(this.getBestUntil().toString().substring(i, i+4));
     }
         
     public void setName(String name) {
@@ -76,7 +76,7 @@ public class Food {
     }
     
       public String toString() {
-        return this.name + ";  Fats: " + this.fats + ";  Proteins: " + this.proteins + ";  Volume: " + this.volume + ";  Fresh: "  + fresh() + ";  Healthy: " + healthy();
+        return this.name + ";  Fats: " + this.fats + ";  Proteins: " + this.proteins + ";  Volume: " + this.volume + ";  Fresh: "  + fresh() + ";  Healthy: " + healthy() + ";  bestUntil: " + getDate() + "." + getMonth() + "." + getYear();
     }
     
    @Override
@@ -95,16 +95,10 @@ public class Food {
         c.set(2015, 11, 16);
         Food water = new Food("Water", c, 0, 0, 0.1);
         System.out.println(water.toString());
-        System.out.println(water.getDate());
-        System.out.println(water.getMonth());
-        System.out.println(water.getYear());
         Calendar b = Calendar.getInstance();
         b.set(2016, 03, 1);
         Food BonPari = new Food("BonPari", b, 0, 0.5, 98);
         System.out.println(BonPari.toString());
-        System.out.println(BonPari.getDate());
-        System.out.println(BonPari.getMonth());
-        System.out.println(BonPari.getYear());
 
     }
 
